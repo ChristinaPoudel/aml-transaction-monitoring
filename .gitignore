@@ -3,10 +3,13 @@
 .env.*
 !.env.example
 
-# Database / local data
-*.sql
+# Local database backups
 *.dump
 *.bak
+
+# Allow project SQL files
+!database/
+!database/*.sql
 
 # IDE
 .vscode/
