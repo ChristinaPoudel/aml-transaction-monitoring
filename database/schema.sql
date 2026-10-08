@@ -447,9 +447,6 @@ ALTER TABLE ONLY public.transactions
     ADD CONSTRAINT transactions_merchant_type_id_fkey FOREIGN KEY (merchant_type_id) REFERENCES public.merchant_types(merchant_type_id);
 
 
---
--- PostgreSQL database dump complete
---
 
-\unrestrict DgPWfldoN9u3F7sPQkBo5Dwg1u6Y6m5tWSuXotAbEpz9YkdztGtasawePmIuYdR
+
 
