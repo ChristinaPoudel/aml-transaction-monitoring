@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict QqM4KkIu3D1fbqagR0yWF3hoyGyzSe5bTRJ8Mwf5t0UepIMKBvgrDhaXV971abO
+
 
 -- Dumped from database version 18.6
 -- Dumped by pg_dump version 18.6
@@ -199,8 +199,8 @@ SELECT pg_catalog.setval('public.transactions_txn_id_seq', 27, true);
 
 
 --
--- PostgreSQL database dump complete
+
 --
 
-\unrestrict QqM4KkIu3D1fbqagR0yWF3hoyGyzSe5bTRJ8Mwf5t0UepIMKBvgrDhaXV971abO
+
 
