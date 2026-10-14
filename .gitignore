@@ -25,3 +25,7 @@ Thumbs.db
 
 # PHP dependencies
 vendor/
+# Local AML test helper copies
+/php/config_test.php
+/php/detect_test.php
+/php/test_connection_test.php
