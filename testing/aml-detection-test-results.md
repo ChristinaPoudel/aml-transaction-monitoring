@@ -87,8 +87,46 @@ All five test cases passed for the scenarios tested. The results support the exp
 
 **Limitation:** This experiment used a test-only replica of the connection function. It did not directly test the application's production `db()` function in `php/config.php`, so further testing is needed to verify the application's actual error-handling behavior.
 
+## 7. Additional Structuring Detection Tests
 
-**Scope note:** These tests cover the `LARGE_TXN` rule only. They do not establish that every AML rule or every application component has been tested.
+**Objective:** Evaluate a test-only detector that identifies transactions between $3,000 and $9,900 when a customer has at least five qualifying transactions within a rolling two-hour window.
+
+**Test environment:** `aml_engine_test` (isolated PostgreSQL test database).
+
+**Script under test:** `php/detect_structuring_test.php` (test-only helper; not the production detector).
+
+### Test Cases and Results
+
+| Test ID | Scenario | Expected Result | Actual Result | Status |
+|---|---|---|---|---|
+| AML-TC-07 | Four qualifying transactions within two hours | No structuring alert | No new alert created | PASS |
+| AML-TC-08 | Five qualifying transactions within two hours | Structuring alert created | One alert created for the threshold-completing transaction | PASS |
+| AML-TC-09 | Five qualifying transactions spread across time, with no qualifying five-transaction rolling window | No alert for the test customer | Zero alerts for the test customer | PASS |
+| AML-TC-10 | Transaction below the $3,000 minimum | Transaction does not qualify for structuring detection | No structuring alert for that transaction | PASS |
+| AML-TC-11 | Five qualifying transactions spanning exactly two hours | Structuring alert created if both endpoints are included | One HIGH, OPEN alert created for the final transaction | PASS |
+| AML-TC-12 | Rerun after an alert already exists | No duplicate alert | Zero new alerts created | PASS |
+
+### Evidence and Observations
+
+- The detector selected transactions in the inclusive amount range of $3,000 to $9,900.
+- Four qualifying transactions within two hours did not trigger an alert.
+- Five qualifying transactions within a two-hour window triggered one alert for the transaction completing the threshold.
+- The customer whose five qualifying transactions were spread across time received no structuring alert.
+- The $2,999.99 transaction was excluded from the qualifying amount range.
+- Five qualifying transactions spanning exactly two hours triggered an alert for the final transaction, consistent with the inclusive PostgreSQL `BETWEEN` condition.
+- Re-running the detector created no duplicate alerts for previously flagged transactions.
+
+### Limitations
+
+These tests were run using a separate test-only helper and an isolated test database. They do not demonstrate that the production detector implements structuring detection.
+
+The current helper inserts alerts for transactions that meet the rolling-window condition, with duplicate checks based on transaction ID and rule code. Further review is needed for multi-account customer scenarios, concurrent execution, exact threshold behavior, and whether the intended business rule should create one alert per qualifying transaction or one alert per customer/window.
+
+### Conclusion
+
+The tested scenarios produced the expected results for the test helper. These results provide evidence of its amount-range filtering, rolling two-hour count, boundary handling, and repeat-run duplicate prevention. Production implementation and broader validation remain outstanding.
+
+**Scope note:** The original application detector tests cover the `LARGE_TXN` rule. The additional `STRUCTURING` tests use a separate test-only helper and do not establish that structuring detection is implemented in the production application. These tests do not cover every AML rule or every application component.
 
 
 

@@ -33,3 +33,6 @@ vendor/
 /php/test_connection_failure_test.php
 
 /php/config_failure_test.php
+
+# Local AML structuring test helper
+/php/detect_structuring_test.php
