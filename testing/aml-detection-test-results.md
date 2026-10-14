@@ -77,8 +77,19 @@ Testing was performed against an isolated test database to avoid modifying the o
 All five test cases passed for the scenarios tested. The results support the expected threshold behavior, severity classification, and repeat-run behavior of the detection script in the isolated test environment.
 
 
+## 6. Additional Connection-Failure Experiment
+
+**Objective:** Check how a PDO connection attempt behaves when the configured database does not exist.
+
+| Test ID | Scenario | Expected Result | Actual Result | Status |
+|---|---|---|---|---|
+| AML-TC-06 | Connect using a deliberately invalid database name in a test-only connection function | Catch the connection exception without displaying database details | Test printed `PASS: db() connection failure was caught.` | PASS |
+
+**Limitation:** This experiment used a test-only replica of the connection function. It did not directly test the application's production `db()` function in `php/config.php`, so further testing is needed to verify the application's actual error-handling behavior.
+
 
 **Scope note:** These tests cover the `LARGE_TXN` rule only. They do not establish that every AML rule or every application component has been tested.
+
 
 
 
