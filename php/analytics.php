@@ -327,8 +327,15 @@ foreach ($merchantRisk as $row) {
      SYSTEM OVERVIEW
 ========================= -->
 
-<div class="section-title">
-    System Overview
+<div class="mb-3">
+
+    <a
+        href="customer_manage.php"
+        class="btn btn-primary"
+    >
+        + Manage Customers
+    </a>
+
 </div>
 
 <div class="row g-3 mb-4">

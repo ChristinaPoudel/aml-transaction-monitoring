@@ -176,15 +176,17 @@ $customers = $stmt->fetchAll();
 
     <!-- Back to Analytics -->
 
-    <div class="back-link">
+   <div class="back-link d-flex gap-2">
 
-        <a href="analytics.php" class="btn btn-outline-secondary">
+    <a href="analytics.php" class="btn btn-outline-secondary">
+        ← Back to Analytics
+    </a>
 
-            ← Back to Analytics
+    <a href="customer_manage.php" class="btn btn-primary">
+        + Add Customer
+    </a>
 
-        </a>
-
-    </div>
+</div>
 
 
     <!-- Customer Table -->
