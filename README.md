@@ -12,6 +12,20 @@ The purpose of this project is to demonstrate how a basic AML transaction monito
 
 The application works with customer, account, and transaction information stored in PostgreSQL. PHP is used to connect the web application to the database and process transaction and risk information.
 
+## Dashboard Preview
+
+![AML Dashboard Overview](aml.png)
+![AML Dashboard Overview](aml2.png)
+![AML Dashboard Overview](aml3.png)
+
+### Customer Risk and Alert Monitoring
+
+![AML Customer Risk and Alerts](aml-dashboard-alerts.png)
+
+### Customer Risk and Alert Monitoring
+
+![AML Customer Risk and Alerts](aml-dashboard-alerts.png)
+
 ## Features
 
 * Customer management
