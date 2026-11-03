@@ -1,5 +1,7 @@
 # AML Transaction Monitoring System
 
+> **Educational project:** This is a learning prototype built with sample data. It demonstrates basic transaction monitoring and risk-scoring concepts. It is not a production AML compliance system and should not be used for real financial decisions.
+
 A web-based Anti-Money Laundering (AML) transaction monitoring project developed using **PHP, PostgreSQL, HTML, CSS, and JavaScript**.
 
 The system is designed to monitor customer transactions, identify potentially suspicious activity using risk-based rules, and provide customer and transaction risk information through a web interface.
